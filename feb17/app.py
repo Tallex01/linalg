@@ -23,7 +23,7 @@ b = torch.tensor([
 lr = 0.01 #learning rate
 
 
-for i in range()
+for i in range(0,1000):
 
     Yhat = X@w + b
     r = Yhat - Y
