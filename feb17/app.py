@@ -20,9 +20,16 @@ b = torch.tensor([
     [0.0]
 ], requires_grad = True)
 
+lr = 0.01
+
 Yhat = X@w + b
 r = Yhat - Y
 loss = r.T@r / 3
 
 loss.backward()
-print(b.grad())
+
+with torch.no_grad():
+    w -= lr*w.grad
+    b -= lr*b.grad
+
+
