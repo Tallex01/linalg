@@ -41,3 +41,9 @@ for i in range()
     w.grad.zero_()
     b.grad.zero_()
 
+# in our case: we get the weight and bias, so our equation
+# becomes about: y = -0.31x + 5.21
+
+
+
+
