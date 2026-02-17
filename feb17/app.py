@@ -50,7 +50,7 @@ X = torch.tensor([
 prediction = X@w+b
 print(prediction)
 
-# in our case: we get the weight and bias, so our equation
+# in our case: we get the weight and bias so our equation
 # becomes about: y = -0.31x + 5.21
 
 
