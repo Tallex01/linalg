@@ -12,4 +12,17 @@ Y = torch.tensor([
     [1.0]
 ])
 
-w = torch.
+w = torch.tensor([
+    [0.0]
+], requires_grad = True)
+
+b = torch.tensor([
+    [0.0]
+], requires_grad = True)
+
+Yhat = X@w + b
+r = Yhat - Y
+loss = r.T@r / 3
+
+loss.backward()
+print(b.grad())
