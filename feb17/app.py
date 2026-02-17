@@ -35,11 +35,20 @@ for i in range(0,1000):
         w -= lr*w.grad
         b -= lr*b.grad
 
-    print(w,b)
-    print(loss)
+#    print(w,b)
+#    print(loss)
 
     w.grad.zero_()
     b.grad.zero_()
+
+print(w,b)
+
+X = torch.tensor([
+    [6.0]
+])
+
+prediction = X@w+b
+print(prediction)
 
 # in our case: we get the weight and bias, so our equation
 # becomes about: y = -0.31x + 5.21
