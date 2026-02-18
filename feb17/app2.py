@@ -25,3 +25,7 @@ for epoch in range(epochs):
     loss.backward()
     optimizer.step()    #update the weights
     optimizer.zero_grad()
+    #print(loss)
+
+print(model.weight)
+print(model.bias)
