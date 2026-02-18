@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
+torch.manual_seed(1)
+
 X = torch.tensor([
     [2.0],
     [5.0],
@@ -29,3 +31,10 @@ for epoch in range(epochs):
 
 print(model.weight)
 print(model.bias)
+
+X = torch.tensor([
+    [6.0]
+])
+
+pred = model(X)
+print(pred)
