@@ -6,8 +6,8 @@ import numpy as np
 
 data = pd.read_csv('data.csv')
 
-features = torch.tensor(data.drop('Price', axis = 1).to_numpy()).float()      #dropping a column instead of a row
-target = torch.tensor(data['Price'].to_numpy()).float().reshape(-1,1)       #1 column, how many rows to make the column
+features = torch.tensor(data.drop('Clicks (100s)', axis = 1).to_numpy()).float()      #dropping a column instead of a row
+target = torch.tensor(data['Clicks (100s)'].to_numpy()).float().reshape(-1,1)       #1 column, how many rows to make the column
 
 fm = features.mean()
 fs = features.std()
@@ -17,11 +17,11 @@ ts = target.std()
 X = (features - fm) / fs
 Y = (target - tm) / ts
 
-model = nn.Linear(1,1)
+model = nn.Linear(4,1)
 criterion = nn.MSELoss()
 optimizer = optim.SGD(model.parameters(), lr = 0.1)
 
-epochs = 100
+epochs = 1000
 for epoch in range(epochs):
     Yhat = model(X)
     loss = criterion(Yhat, Y)
@@ -31,9 +31,14 @@ for epoch in range(epochs):
     print(loss)
 
 features = torch.tensor([
-    [1500.0]
+    [7.5, 15.0, 70.0, 1.0]
 ])
 
 X = (features - fm) / fs
 pred = model(X)
 print(pred*ts + tm)
+
+
+
+
+
