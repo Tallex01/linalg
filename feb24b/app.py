@@ -1,0 +1,44 @@
+import torch
+import torch.nn as nn
+import gradio as gr
+
+model_data = torch.load('model.pth')
+
+fm = model_data['fm']
+fs = model_data['fs']
+parameters = model_data['parameters']
+
+linear = nn.Linear(2,1)
+linear.load_state_dict(parameters)
+
+model = nn.Sequential(
+    linear,
+    nn.Sigmoid()
+)
+
+features = torch.tensor([
+    [6.0, 1.0]
+]).float()
+
+X = (features - fm) / fs
+classification = model(X)
+
+
+def f(hours,exams):
+    features = torch.tensor([
+        [hours, exams]
+    ]).float()
+
+    X = (features - fm) / fs
+    classification = model(X).item()
+    return "Pass" if classification >= 0.5 else "Fail"
+
+with gr.Blocks() as iface:
+    hours_box = gr.Number(label = "Provide study hours")
+    exams_box = gr.Number(label = "Provide practice exams")
+    result_box = gr.Textbox(label = "Result")
+    hours_box.change(fn = f, inputs = [hours_box, exams_box], outputs = [result_box])
+    exams_box.change(fn = f, inputs = [hours_box, exams_box], outputs = [result_box])
+
+iface.launch()
+
