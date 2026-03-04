@@ -8,8 +8,8 @@ fm = model_data['fm']
 fs = model_data['fs']
 parameters = model_data['parameters']
 
-linear = nn.Linear(2,1)
-linear.load_state_dict(parameters)
+linear = nn.Linear(3,1)             #linear part of nn, doesn't include sigmoid
+linear.load_state_dict(parameters)  
 
 model = nn.Sequential(
     linear,
@@ -17,11 +17,11 @@ model = nn.Sequential(
 )
 
 features = torch.tensor([
-    [6.0, 1.0]
+    [53.0, 242.0, 136.0]
 ]).float()
 
 X = (features - fm) / fs
-classification = model(X)
+classification = model(X)   # prints probability
 
 
 def f(hours,exams):
