@@ -1,3 +1,7 @@
+#####################
+# Based on project.py
+#####################
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -27,7 +31,7 @@ for epoch in range(epochs):
     loss = criterion(Yhat, Y)
     loss.backward()
     optimizer.step()
-    optimizer.zerograd_()
+    optimizer.zero_grad()
     print(loss)
 
 features = torch.tensor([
@@ -37,3 +41,5 @@ features = torch.tensor([
 X = (features - fm) / fs
 pred = model(X)
 print(pred*ts + tm)
+
+
