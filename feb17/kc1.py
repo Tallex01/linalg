@@ -1,5 +1,5 @@
 #####################
-# Based on project.py
+# Based on project.py, regression prediction practice
 #####################
 
 import torch
