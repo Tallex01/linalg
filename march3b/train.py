@@ -11,15 +11,15 @@ X = torch.tensor(data.drop('y', axis=1).values).float()
 Y = torch.tensor(data['y'].values).float().reshape(-1,1)
 
 model = nn.Sequential(
-    nn.Linear(2,8),      #2 inputs, 3 outputs (in the next layer)
-    nn.ReLU(),
-    nn.Linear(8,1)
+    nn.Linear(2,3),      #2 inputs, 3 outputs (in the next layer) # MODEL + data IS CURRENTLY FOR Concentric Circles
+    nn.Sigmoid(),           
+    nn.Linear(3,1)
 )
 
 criterion = nn.BCEWithLogitsLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.1)
 
-epochs = 10000
+epochs = 1000
 
 for epoch in range(epochs):
     Yhat = model(X)

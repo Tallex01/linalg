@@ -1,3 +1,7 @@
+#######################
+# Binary Classification
+#######################
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -6,7 +10,7 @@ import pandas as pd
 torch.manual_seed(42)
 
 data = pd.read_csv('data.csv')
-data['Risk'] = data['Risk'].map({'Healthy':0, 'At Risk':1}) #chaning to 0-1
+data['Risk'] = data['Risk'].map({'Healthy':0, 'At Risk':1})                     #chaning to 0-1
 
 features = torch.tensor(data.drop('Risk', axis = 1).values).float()
 target = torch.tensor(data['Risk'].values).float().reshape(-1,1)
@@ -18,10 +22,10 @@ X = (features-fm) / fs
 Y = target
 
 model = nn.Linear(3,1)   #3 features, 1 output
-criterion = nn.BCEWithLogitsLoss()
+criterion = nn.BCEWithLogitsLoss()         # loss function, but for Binary classification
 optimizer = optim.SGD(model.parameters(), lr=0.1)
-epochs = 250
 
+epochs = 250
 for epoch in range(epochs):
     Yhat = model(X)
     loss = criterion(Yhat, Y)      # Yhat must be first here

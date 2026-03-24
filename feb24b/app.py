@@ -11,10 +11,7 @@ parameters = model_data['parameters']
 linear = nn.Linear(3,1)             #linear part of nn, doesn't include sigmoid
 linear.load_state_dict(parameters)  
 
-model = nn.Sequential(
-    linear,
-    nn.Sigmoid()
-)
+model = nn.Sequential(linear, nn.Sigmoid())    #creating the model with 2 layers, a linear layer and a sigmoid layer
 
 features = torch.tensor([
     [53.0, 242.0, 136.0]
@@ -24,7 +21,7 @@ X = (features - fm) / fs
 classification = model(X)   # prints probability
 
 
-def f(hours,exams):
+def f(hours,exams):                 #function to be used in gr.Blocks, some diffs
     features = torch.tensor([
         [hours, exams]
     ]).float()

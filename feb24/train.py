@@ -1,3 +1,11 @@
+#########
+# Creating the model in train.py, similar to class on 2/17
+# but in a separate file imported into app.py
+
+
+#only differences are that we are saving the results in a file model.pth
+#######
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -38,5 +46,4 @@ torch.save({
     'ts':ts,
     'parameters':model.state_dict()
 }, 'model.pth')
-
 
