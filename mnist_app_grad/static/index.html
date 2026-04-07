@@ -10,7 +10,11 @@
     <h1>MNIST Viewer</h1>
     <button id="load-btn">Load Random Digit</button>
     <div id="result" hidden>
-        <p>Label: <span id="label"></span></p>
+        <div id="info-container">
+            <p>Label (Actual): <span id="label"></span></p>
+            <p>Prediction (Guessed): <span id="prediction"></span></p>
+            <p id="smiley-container"><span id="smiley"></span></p>
+        </div>
         <canvas id="canvas" width="28" height="28"></canvas>
     </div>
     <script src="script.js"></script>

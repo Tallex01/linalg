@@ -30,9 +30,31 @@ button:hover {
     text-align: center;
 }
 
+#info-container {
+    margin-bottom: 20px;
+}
+
 #result p {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+}
+
+#smiley-container {
+    margin-top: 15px !important;
+}
+
+.smiley {
+    font-size: 48px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.smiley.correct {
+    color: green;
+}
+
+.smiley.incorrect {
+    color: red;
 }
 
 canvas {
